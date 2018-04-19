@@ -10,3 +10,9 @@ body{
 #maerli{
 	-webkit-border-radius: 50px;
 }
+#menu{
+	position:absolute;
+	left:20%;
+	right:10%;
+	background-color:black;
+}
