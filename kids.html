@@ -1,0 +1,94 @@
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>kids</title>
+		<script type="text/javascript" >
+			const words = ["cavalo","sapo","gato","galo","dado","casa","vaca",
+								"banana","mesa"];
+			var current;
+			const images = {};
+			function randint(a) {
+				return Math.floor(Math.random()*a);
+			}
+			function carregarTodasImagens() {
+				for (let i = 0; i<words.length;i++) {
+					let img = new Image();
+					img.src= 'imgs/'+words[i]+".png";
+					img.width = 300;
+					img.height = 200;
+					images[words[i]] = img;
+				}
+			}
+			function chooseImage() {
+				let w = words[randint(words.length)];
+				current = w.toUpperCase();
+				let img = images[w];
+				document.querySelector('#image').appendChild(img);
+				document.querySelector('#text').innerHTML = w.toUpperCase();
+			}
+			
+			function writeCurrent(x) {
+				let y = x.split('');
+				let re = RegExp(x).test(current);
+				let r = current.replace(x,'');
+				if (re) {
+					document.querySelector('#text').innerHTML = y.map(function(a) {
+					return '<span class=\'green\'>'+a+'</span>';
+				}).join('')+r;
+				}
+			}
+			addEventListener('load',function() {
+				carregarTodasImagens();
+				chooseImage();
+				document.querySelector('#texto').addEventListener('keyup',function() {
+					let text = this.value.toUpperCase();
+					writeCurrent(text);
+					if(text == current){
+						this.readyOnly = true;
+						setTimeout(function () {
+							location.reload();
+						},2000);		
+					}
+				})
+			});
+		
+		addEventListener('click',function () {
+			document.querySelector('#texto').focus();
+		});
+			
+		</script>
+		<style type="text/css">
+			#image{
+				display: inline-block;
+				margin:2%;
+				text-align: center;	
+			}
+			#texto{
+				font-size: 32px;
+				padding:5px;
+				-webkit-border-radius:10px;
+				border:1px solid black;
+				overflow: hidden;
+				text-transform: uppercase;
+				text-indent: 4px;
+				width: 300px;
+			}
+			#text{
+				font-weight: bold;
+				font-size: 50px;			
+			}
+			body{
+				text-align: center;			
+			}
+			.green{
+				color: rgb(0,255,127);			
+			}
+		</style>
+	</head>
+	<body>
+		<div id="image"></div>
+		<div id="text"></div>
+		<div id="write"><input autofocus type="text" id="texto"></div>
+	</body>	
+	
+</html>
