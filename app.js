@@ -1,5 +1,8 @@
 function App(){
-     return React.createElement("h1", null, "oi");
+     const {Paper} = MaterialUI;
+     return React.createElement(Paper, null, "Oii meu nome é maerli... Dê uma olhadinha na minha loja hehehe",
+     e("a", {href:"store"}, "Maerli Store"),
+);
   }
   let module = {exports: App};
 function Render(r){
