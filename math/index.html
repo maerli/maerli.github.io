@@ -21,6 +21,14 @@ const primes = n =>{
 	const t = Math.sqrt(n);
 	
 }
+const simp = (a,b)=> {
+ const x = a/mdc(a,b);
+ const y = b/mdc(a,b);
+ if(y < 0){
+   return [-x, -y];
+ }
+ return [x,y];
+}
 
 const mdc = (a,b)=>{
 	if(b == 0) return a;
@@ -29,9 +37,7 @@ const mdc = (a,b)=>{
 const mmc = (a,b) => a*b / mdc(a,b);
 
 
-const simp = (a,b)=> [a/mdc(a,b) , b/mdc(a,b)];
-
-const unsimp = (a,b,n)=> {
+unsimp = (a,b,n)=> {
 	const [x,y] = simp(a,b);
 	return [x*n, y*n, x, y];
 }
