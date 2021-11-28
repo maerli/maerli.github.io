@@ -1,7 +1,43 @@
 <html>
 <head>
+<style>
+.item{
+   padding:0;
+}
+.list{
+  color:blue;
+}
+.disclaimer{
+  color: gray;
+  font-size:11px;
+  margin:10px 0 10px 0;
+}
+.donation{
+margin:10px 0 10px 0;
+padding:5px;
+}
+.email{
+  text-decoration: underline;
+}
+@media print{
+  .item{
+    display:none;
+  }
+}
+</style>
 <script src="https://unpkg.com/react@17/umd/react.development.js"> </script>
  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+ 
+ <script>
+MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']]
+  }
+};
+</script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
  
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
@@ -11,6 +47,18 @@
 
 <script>
 const e = React.createElement;
+
+var seed = 1 ;
+function random() {
+    var x = Math.sin(seed++) * 10000;
+    return x - Math.floor(x);
+}
+Math.random = random;
+
+const Frac = ({a,b})=>{
+  return e("div", {style:{display:"inline-flex",borderWidth:"0 0 1px 0", borderStyle:"solid"}}, e("div",{ style:{borderWidth:"0 0 1px 0", borderStyle:"solid"}}, a), e("div",null,b));
+}
+
 function App(){
  const {log} = console;
 questions = ["qual o valor da expressão "];
@@ -21,6 +69,14 @@ const primes = n =>{
 	const t = Math.sqrt(n);
 	
 }
+
+const mdc = (a,b)=>{
+	if(b == 0) return a;
+	return mdc(b, a%b);
+}
+const mmc = (a,b) => a*b / mdc(a,b);
+
+
 const simp = (a,b)=> {
  const x = a/mdc(a,b);
  const y = b/mdc(a,b);
@@ -30,14 +86,7 @@ const simp = (a,b)=> {
  return [x,y];
 }
 
-const mdc = (a,b)=>{
-	if(b == 0) return a;
-	return mdc(b, a%b);
-}
-const mmc = (a,b) => a*b / mdc(a,b);
-
-
-unsimp = (a,b,n)=> {
+const unsimp = (a,b,n)=> {
 	const [x,y] = simp(a,b);
 	return [x*n, y*n, x, y];
 }
@@ -123,6 +172,7 @@ const makeExpression = ()=>{
 };
 
 const frac = (a,b) => [a,b];
+const toFrac = (a,b) => `$ \\frac{${a}}{${b}}$ `;
 
 
 const ranInt = (a,b, not)=>{
@@ -185,12 +235,12 @@ const database = [
 	if(y == 1) y = 2;
 	if(x == y) y++;
 	const [a,b,c,d] = unsimp(x,y, ranInt(2,5));
-	respostas.push(" R: "+ c+"/"+d );
-	return `simplifique a fração ${a}/${b}`;
+	respostas.push(toFrac(c,d));
+	return `simplifique a fração $ \\frac{${a}}{${b}} $`;
 },
 ()=>{
 	const [a,b] = dizima(1);
-	respostas.push(` R :${b[0]}/${b[1]}`);
+	respostas.push(toFrac(b[0], b[0]));
 	return `Qual fração produz a dízima periódica ${a}... ?`;
 },
 ()=>{
@@ -199,8 +249,8 @@ const database = [
 	x = x.map((a,b)=>{
 		const [f,s,r] = somarFrac();
 		const l = String.fromCharCode(97+b);
-		z.push(e("div", null, `${l}) ${r[0]}/${r[1]}`));
-		return e("div", null, `${l}) ${f[0]}/${f[1]} + ${s[0]}/${s[1]} = ?\n`);
+		z.push(e("div", null, `${l}) ${toFrac(r[0],r[1])}`));
+		return e("div", null, `${l}) ${toFrac(f[0],f[1])} + ${toFrac(s[0],s[1])} = ?`);
 	})
 	respostas.push(z);
 	
@@ -212,8 +262,8 @@ const database = [
 	x = x.map((a,b)=>{
 		const [f,s,r] = subFrac();
 		const l = String.fromCharCode(97+b);
-		z.push(e("div", null, `${l}) ${r[0]}/${r[1]}`));
-		return e("div", null, l+") ",`${f[0]}/${f[1]} - ${s[0]}/${s[1]} = ?\n`);
+		z.push(e("div", null, `${l}) ${toFrac(r[0],r[1])}`));
+		return e("div", null, l+") ",`${toFrac(f[0],f[1])} - ${toFrac(s[0],s[1])} = ?\n`);
 	})
 	respostas.push(z);
 	return e("div" ,null, "Subtraia as frações:", x);
@@ -231,14 +281,16 @@ return m;
 }
 ];
 //log(randList(5,1,5,0));
-return e("div", null, database.map((a,b)=>{
-	return e("div",{style:{padding:2}},e("h4", null, "Questão ", b+1), a());
-}), e("h1", null, "respostas"), respostas.map((a,b) => e("div", null,e("strong", null, "questão ",b+1), a)), e("button", {onClick: ()=> window.location.reload(), style:{marginBottom:10}}, "Nova atividade"));
+return e("div", null,e("h2", null, "Gerador de questões de matemática."), e("div", {className:"disclaimer"} , "Este projeto visa a criação de um gerador automático de questões de matemática para professores aplicarem nas séries finais do ensino fundamental. " ) , database.map((a,b)=>{
+	return e("div",{className:"item"},e("strong", {className:"list"} , (b+1)+" - "), a());
+}), e("h1", null, "respostas"), respostas.map((a,b) => e("div", null,e("strong", {className:"list"} ,b+1), a)), e("button", {onClick: ()=> window.location.reload(), style:{marginBottom:10}},"Nova atividade"), e("div",{className:"donation"} , "Por favor considere fazer uma doação via PIX ou Paypal em ", e("strong", null, "maerli.pereira@gmail.com")));
 
 
 }
 
-ReactDOM.render(App(), document.querySelector("#root"))
+ReactDOM.render(App(), document.querySelector("body"));
+
 </script>
+
 </body>
 </html>
