@@ -53,7 +53,7 @@ function random() {
     var x = Math.sin(seed++) * 10000;
     return x - Math.floor(x);
 }
-Math.random = random;
+//Math.random = random;
 
 const Frac = ({a,b})=>{
   return e("div", {style:{display:"inline-flex",borderWidth:"0 0 1px 0", borderStyle:"solid"}}, e("div",{ style:{borderWidth:"0 0 1px 0", borderStyle:"solid"}}, a), e("div",null,b));
