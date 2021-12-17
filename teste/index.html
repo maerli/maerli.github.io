@@ -1,0 +1,54 @@
+<title> Teste de plataforma - maerli</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>
+
+function insert(json){
+   const a = $("#respostas");
+   a.innerHTML = "";
+   json.respostas.forEach(b=>{
+     let x = document.createElement("div");
+     x.innerText = b[0] + "#->" + b[1];
+     a.append(x);
+   });
+}
+let url = "http://d7b1-45-161-187-11.ngrok.io";
+
+async function oi(name, resp){
+
+const req = await fetch(url, {method:"post", headers:{"Content-Type":"application/json"},body:JSON.stringify([name,resp])});
+const json = await req.json();
+insert(json);
+}
+
+async function load(){
+ const req = await fetch(url);
+ insert(await req.json());
+}
+load();
+const $= id => document.querySelector(id)
+
+function allow(){
+  const name = $("#nome").value;
+  const resp = $("#form").a.value;
+  oi(name, resp);
+}
+</script>
+
+<h1> Teste plataforma </h1>
+<div>
+<input type="text" placeholder="seu nome" id="nome">
+<form id="form">
+Do que são feitas as nuvens?
+<div>
+<input type="radio" name="a" value="água"> água 
+</div>
+<div>
+<input type="radio" name="a" value="fumaça"> fumaça
+</div>
+</form>
+<button onclick="allow()"> enviar </button>
+<div>
+
+<div id="respostas">
+
+</div>
