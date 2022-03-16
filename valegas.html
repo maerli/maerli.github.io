@@ -23,11 +23,18 @@
          div{
             display: none!important;
         }
+        button{
+            border:0;
+            color:white;
+            background:blue;
+            outline:none;
+            border-radius:5px;
+        }
     </style>
 </head>
 <body>
 <h1> Lista de pessoas a receberem Vale-Gás na cidade de Bela Cruz - CE </h1>
-<input type="text" placeholder="Procurar por nome" autofocus onkeyup="procurar(this.value.toUpperCase())">
+<input type="text" placeholder="Procurar por nome" autofocus id="nome"><button onclick="procurar($('nome').value.toUpperCase())"> Procurar </button>
 <table>
     <thead><th> Nome </th><th>NIS</th><th>CPF</th> <th>Endereço</th> <th>Bairro</th></thead>
     <tbody id="body">
