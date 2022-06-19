@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title> Descritores </title>
+	 <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+	<style type="text/css">
+		.folder{
+			background-color: rgb(250,250,255);
+			padding: 4px;
+			color: blue;
+			margin: 5px;
+			cursor: pointer;
+			border-radius: 2px;
+			
+		}
+		button{
+		   
+		       border-radius: 10px;
+		       color: white;
+		       background-color: blue;
+		       margin: 10px 0 10px 0;
+		}
+	</style>
+	<script type="text/javascript">
+		const base = (path) => "http://"+window.location.hostname+":2000"+path
+
+                const items = [
+  {
+    "id": 1,
+    "type": 0,
+    "parent": 0,
+    "name": "INTERAGINDO COM NÚMEROS E FUNÇÕES",
+    "data": "",
+    "created_at": "2022-06-19 14:08:45"
+  },
+  {
+    "id": 2,
+    "type": 0,
+    "parent": 0,
+    "name": "CONVIVEDO COM A GEOMETRIA",
+    "data": "",
+    "created_at": "2022-06-19 14:09:10"
+  },
+  {
+    "id": 3,
+    "type": 0,
+    "parent": 0,
+    "name": "VIVENCIANDO AS MEDIDAS",
+    "data": "",
+    "created_at": "2022-06-19 14:09:22"
+  },
+  {
+    "id": 4,
+    "type": 0,
+    "parent": 0,
+    "name": "TRATAMENTO DA INFORMAÇÃO",
+    "data": "",
+    "created_at": "2022-06-19 14:09:51"
+  },
+  {
+    "id": 20,
+    "type": 0,
+    "parent": 1,
+    "name": "D7 Resolver problema utilizando minimo multiplo comun ou maximo divisor comum com os números naturais.",
+    "data": "",
+    "created_at": "2022-06-19 14:20:06"
+  },
+  {
+    "id": 21,
+    "type": 0,
+    "parent": 1,
+    "name": "D8 Ordenar ou identificar a localização de números inteiros na reta númerica.",
+    "data": "",
+    "created_at": "2022-06-19 14:20:06"
+  },
+  {
+    "id": 22,
+    "type": 0,
+    "parent": 1,
+    "name": "D10 Resolver problema com números inteiros envolvendo suas operações.",
+    "data": "",
+    "created_at": "2022-06-19 14:20:06"
+  },
+  {
+    "id": 23,
+    "type": 0,
+    "parent": 1,
+    "name": "D13 Ordenar ou identificar a localização de números racionais na reta númerica.",
+    "data": "",
+    "created_at": "2022-06-19 14:20:06"
+  },
+  {
+    "id": 24,
+    "type": 0,
+    "parent": 1,
+    "name": "D12 Resolver problema com números racionais envolvendo suas operações.",
+    "data": "",
+    "created_at": "2022-06-19 14:20:06"
+  },
+  {
+    "id": 25,
+    "type": 0,
+    "parent": 1,
+    "name": "D13 Reconhecer diferentes representações de um mesmo numero racional, em situação problema.",
+    "data": "",
+    "created_at": "2022-06-19 14:20:06"
+  },
+  {
+    "id": 26,
+    "type": 0,
+    "parent": 1,
+    "name": "D15 Resolver problema ulilizando a adição ou subtração com números racionais representados na forma fracionária (mesmo denominador ou denominadores diferentes) ou na forma decimal.",
+    "data": "",
+    "created_at": "2022-06-19 14:20:06"
+  },
+  {
+    "id": 27,
+    "type": 0,
+    "parent": 1,
+    "name": "D17 Resolver situação problema utilizando porcentagem.",
+    "data": "",
+    "created_at": "2022-06-19 14:20:06"
+  },
+  {
+    "id": 28,
+    "type": 0,
+    "parent": 1,
+    "name": "D18 Resolver situação problema envolvendo a variação proporcional entre grandezas direta ou inversamente proporcionais.",
+    "data": "",
+    "created_at": "2022-06-19 14:20:06"
+  },
+  {
+    "id": 29,
+    "type": 0,
+    "parent": 1,
+    "name": "D19 Resolver problema envolvendo juros simples.",
+    "data": "",
+    "created_at": "2022-06-19 14:20:06"
+  },
+  {
+    "id": 30,
+    "type": 0,
+    "parent": 1,
+    "name": "D21 Efetuar cálculos com números irracionais, utiizando suas propriedades.",
+    "data": "",
+    "created_at": "2022-06-19 14:20:06"
+  },
+  {
+    "id": 31,
+    "type": 0,
+    "parent": 1,
+    "name": "D24 Faforar e simplificar expressões algébricas.",
+    "data": "",
+    "created_at": "2022-06-19 14:20:06"
+  },
+  {
+    "id": 32,
+    "type": 0,
+    "parent": 1,
+    "name": "D25 Resolver situação problema que envolva equaçoes de 1º grau.",
+    "data": "",
+    "created_at": "2022-06-19 14:20:06"
+  },
+  {
+    "id": 33,
+    "type": 0,
+    "parent": 1,
+    "name": "D26 Resolver situação problema envolvendo equaçao do 2º grau.",
+    "data": "",
+    "created_at": "2022-06-19 14:20:06"
+  },
+  {
+    "id": 34,
+    "type": 0,
+    "parent": 1,
+    "name": "D27 Resolver situação problema envolvendo sistema de equações do 1° grau.",
+    "data": "",
+    "created_at": "2022-06-19 14:20:06"
+  },
+  {
+    "id": 35,
+    "type": 0,
+    "parent": 2,
+    "name": "D48 Identificar e classificar figuras planas: quadrado, retângulo, triângulo e circulo, destacando algumas de suas caraterísticas de núrnero de lados e tipo de ângulos).",
+    "data": "",
+    "created_at": "2022-06-19 14:23:50"
+  },
+  {
+    "id": 36,
+    "type": 0,
+    "parent": 2,
+    "name": "D49 Resolver problema envolvendo semelhança de figuras planas.",
+    "data": "",
+    "created_at": "2022-06-19 14:23:50"
+  },
+  {
+    "id": 37,
+    "type": 0,
+    "parent": 2,
+    "name": "D50 Resolver situação problema aplicando o Teorema de Pitágoras ou as demais relações métricas.",
+    "data": "",
+    "created_at": "2022-06-19 14:23:50"
+  },
+  {
+    "id": 38,
+    "type": 0,
+    "parent": 2,
+    "name": "D52 Identificar planificações de alguns poliedros e/ ou corpos redondos.",
+    "data": "",
+    "created_at": "2022-06-19 14:23:50"
+  },
+  {
+    "id": 39,
+    "type": 0,
+    "parent": 2,
+    "name": "D51 Resolver problema usando as propriedades dos polígonos (soma dos angulos internos, número de diagonais e cálculo do ângulo intemo de poligonos regulares).",
+    "data": "",
+    "created_at": "2022-06-19 14:23:50"
+  },
+  {
+    "id": 40,
+    "type": 0,
+    "parent": 3,
+    "name": "D65 Calcular o perímetro de figuras panas, numa situação problema.",
+    "data": "",
+    "created_at": "2022-06-19 14:24:36"
+  },
+  {
+    "id": 41,
+    "type": 0,
+    "parent": 3,
+    "name": "D67 Resolver problema envolvendo o cálculo de área de figuras planas.",
+    "data": "",
+    "created_at": "2022-06-19 14:24:36"
+  },
+  {
+    "id": 42,
+    "type": 0,
+    "parent": 3,
+    "name": "D69 Resolver problema envolvendo noções de volume.",
+    "data": "",
+    "created_at": "2022-06-19 14:24:36"
+  },
+  {
+    "id": 43,
+    "type": 0,
+    "parent": 4,
+    "name": "D75 Resolver problema envolvendo informações apresentadas em tabelas ou gráficos.",
+    "data": "",
+    "created_at": "2022-06-19 14:25:21"
+  },
+  {
+    "id": 44,
+    "type": 0,
+    "parent": 4,
+    "name": "D77 Resolver problema usando a média aritmética.",
+    "data": "",
+    "created_at": "2022-06-19 14:25:21"
+  },
+  {
+    "id": 55,
+    "type": 1,
+    "parent": 20,
+    "name": "Em uma apresentação para o lançamento do novo carro de corrida da equipe Ferrari, foi realiza uma corrida inusitada. Três veículos participaram: o carro lançamento, o carro da temporada passada e um carro de passeio, comum.\n\nO circuito é oval, os três largaram juntos e mantiveram velocidades constantes. O carro lançamento leva 6 minutos para completar uma volta. O carro da temporada passada leva 9 minutos para completar uma volta e o carro de passeio leva 18 minutos para completar uma volta.\nDepois que a corrida começa, em quanto tempo eles passarão juntos novamente pelo mesmo local da largada?",
+    "data": "[\"Em uma apresentação para o lançamento do novo carro de corrida da equipe Ferrari, foi realiza uma corrida inusitada. Três veículos participaram: o carro lançamento, o carro da temporada passada e um carro de passeio, comum.\\n\\nO circuito é oval, os três largaram juntos e mantiveram velocidades constantes. O carro lançamento leva 6 minutos para completar uma volta. O carro da temporada passada leva 9 minutos para completar uma volta e o carro de passeio leva 18 minutos para completar uma volta.\\nDepois que a corrida começa, em quanto tempo eles passarão juntos novamente pelo mesmo local da largada?\",[\"15\",\"18\",\"20\",\"25\",\"30\"],\"1\"]",
+    "created_at": "2022-06-19 15:02:39"
+  },
+  {
+    "id": 56,
+    "type": 1,
+    "parent": 22,
+    "name": "Ana tinha em sua conta bancária um saldo de R$300,00. Sabendo que foi debitado de sua conta um cheque de R $200,00 , qual é o saldo da conta de Ana?",
+    "data": "[\"Ana tinha em sua conta bancária um saldo de R$300,00. Sabendo que foi debitado de sua conta um cheque de R $200,00 , qual é o saldo da conta de Ana?\",[\"50\",\"100\",\"150\",\"200\",\"5000\"],\"1\"]",
+    "created_at": "2022-06-19 15:49:02"
+  },
+  {
+    "id": 57,
+    "type": 1,
+    "parent": 40,
+    "name": "Seu João resolveu fazer um cercado em sua fazenda com o intuito de plantar algumas verduras. Para impedir que os animais comam seu plantio, ele decidiu cercar a região com arame.\n\nSabendo que a parte do terreno que seu João utilizou forma um quadrilátero com os lados 50 m, 18 m, 42 m e 16 m, quantos metros de arame seu João precisa comprar para cercar o terreno?",
+    "data": "[\"Seu João resolveu fazer um cercado em sua fazenda com o intuito de plantar algumas verduras. Para impedir que os animais comam seu plantio, ele decidiu cercar a região com arame.\\n\\nSabendo que a parte do terreno que seu João utilizou forma um quadrilátero com os lados 50 m, 18 m, 42 m e 16 m, quantos metros de arame seu João precisa comprar para cercar o terreno?\",[\"121\",\"138\",\"126\",\"134\",\"115\"],\"2\"]",
+    "created_at": "2022-06-19 16:15:58"
+  },
+  {
+    "id": 58,
+    "type": 1,
+    "parent": 32,
+    "name": "O dobro de um número adicionado ao triplo dele é 100. Que número é esse?",
+    "data": "[\"O dobro de um número adicionado ao triplo dele é 100. Que número é esse?\",[\"30\",\"50\",\"40\",\"20\",\"10\"],\"3\"]",
+    "created_at": "2022-06-19 16:25:56"
+  },
+  {
+    "id": 59,
+    "type": 1,
+    "parent": 32,
+    "name": "8) O triplo de um número, mais dois, é igual ao próprio número, mais oito. Esse número 6:",
+    "data": "[\"8) O triplo de um número, mais dois, é igual ao próprio número, mais oito. Esse número 6:\",[\"1\",\"5\",\"4\",\"2\",\"3\"]]",
+    "created_at": "2022-06-19 16:27:27"
+  },
+  {
+    "id": 61,
+    "type": 1,
+    "parent": 29,
+    "name": "Renata acabou se esquecendo de pagar uma das contas de energia da sua residência. Como de costume, ela precisou pagar juros e multa pelo atraso de dois meses. Sabendo que o valor da conta era de R$ 160,00 antes do atraso e que a multa é de 1%, e os juros, de 3% ao mês, o valor pago a mais na conta devido ao atraso foi de:",
+    "data": "[\"Renata acabou se esquecendo de pagar uma das contas de energia da sua residência. Como de costume, ela precisou pagar juros e multa pelo atraso de dois meses. Sabendo que o valor da conta era de R$ 160,00 antes do atraso e que a multa é de 1%, e os juros, de 3% ao mês, o valor pago a mais na conta devido ao atraso foi de:\",[\"16\",\"1,6\",\"9,6\",\"11,20\",\"170,20\"],\"3\"]",
+    "created_at": "2022-06-19 16:34:31"
+  },
+  {
+    "id": 62,
+    "type": 1,
+    "parent": 27,
+    "name": "Se 40% de um número qualquer é 20, determine esse número.",
+    "data": "[\"Se 40% de um número qualquer é 20, determine esse número.\",[\"50\",\"40\",\"20\",\"10\",\"30\"],\"0\"]",
+    "created_at": "2022-06-19 16:42:25"
+  },
+  {
+    "id": 63,
+    "type": 1,
+    "parent": 28,
+    "name": "O muro da casa de Roberto foi construído por 3 operários em 7 dias.\n\nSe ele tivesse contratado 7 operários, que trabalharem nas mesmas condições, o muro estaria pronto em:",
+    "data": "[\"O muro da casa de Roberto foi construído por 3 operários em 7 dias.\\n\\nSe ele tivesse contratado 7 operários, que trabalharem nas mesmas condições, o muro estaria pronto em:\",[\"17 dias\",\"5 dias\",\"4 dias\",\"3 dias\",\"6 dias\"],\"3\"]",
+    "created_at": "2022-06-19 16:58:56"
+  },
+  {
+    "id": 64,
+    "type": 1,
+    "parent": 33,
+    "name": "Qual o valor de x para que a equação x² = 3x² - 8 seja verdadeira",
+    "data": "[\"Qual o valor de x para que a equação x² = 3x² - 8 seja verdadeira\",[\"1\",\"2\",\"3\",\"4\",\"5\"],\"1\"]",
+    "created_at": "2022-06-19 18:10:44"
+  },
+  {
+    "id": 65,
+    "type": 1,
+    "parent": 31,
+    "name": "Note a expressão algébrica na variável x abaixo.\nx³ - 2.x² + x\nUma forma fatorada desta expressão pode ser representada por",
+    "data": "[\"Note a expressão algébrica na variável x abaixo.\\nx³ - 2.x² + x\\nUma forma fatorada desta expressão pode ser representada por\",[\"x . (x - 1) \",\"x . (x - 1)² \",\"x² . (x - 1)\",\"x . (x - 1)³\",\"(x - 1).(x + 1)\"],\"1\"]",
+    "created_at": "2022-06-19 18:15:22"
+  },
+  {
+    "id": 66,
+    "type": 1,
+    "parent": 30,
+    "name": "Resolva a expressão numérica a seguir:\n√5 + 3.√5 =\nQual o resultado dessa expressão?",
+    "data": "[\"Resolva a expressão numérica a seguir:\\n√5 + 3.√5 =\\nQual o resultado dessa expressão?\",[\"3.√5.\",\"4.√5.\",\"3.√10.\",\"4.√10.\",\"5.√5\"],\"1\"]",
+    "created_at": "2022-06-19 18:17:42"
+  },
+  {
+    "id": 67,
+    "type": 1,
+    "parent": 34,
+    "name": "João somou sua idade com a de seu irmão Pedro e resultou em 40, e depois subtraiu sua idade da idade de seu irmão Pedro novamente resultado em 10. Qual a idade dos dois?",
+    "data": "[\"João somou sua idade com a de seu irmão Pedro e resultou em 40, e depois subtraiu sua idade da idade de seu irmão Pedro novamente resultado em 10. Qual a idade dos dois?\",[\"João 23 e Pedro 17\",\"João 25 e Pedro 15\",\"João 10 e Pedro 30\",\"João 30 e Pedro 15\",\"João 12 e Pedro 27\"],\"1\"]",
+    "created_at": "2022-06-19 18:22:21"
+  },
+  {
+    "id": 68,
+    "type": 1,
+    "parent": 42,
+    "name": "Uma caixa de chocolate no formato de um paralelepípedo reto - retângulo, possui\nas seguintes medidas: 8 centímetros de altura, 14 centímetros de largura e 22\ncentímetros de comprimento.\nQual a capacidade máxima dessa embalagem?",
+    "data": "[\"Uma caixa de chocolate no formato de um paralelepípedo reto - retângulo, possui\\nas seguintes medidas: 8 centímetros de altura, 14 centímetros de largura e 22\\ncentímetros de comprimento.\\nQual a capacidade máxima dessa embalagem?\",[\" 44 cm³\",\"288 cm³\",\"484 cm³\",\"2.464 cm³\",\"2000 cm³\"],\"3\"]",
+    "created_at": "2022-06-19 18:51:56"
+  },
+  {
+    "id": 69,
+    "type": 1,
+    "parent": 41,
+    "name": "Um jardim no formato quadrado será totalmente revestido com 400 cerâmicas\nquadradas, sem desperdício de material. Sabendo que cada cerâmica possui 0,3 metro\nde lado, o perímetro do jardim mede",
+    "data": "[\"Um jardim no formato quadrado será totalmente revestido com 400 cerâmicas\\nquadradas, sem desperdício de material. Sabendo que cada cerâmica possui 0,3 metro\\nde lado, o perímetro do jardim mede\",[\"6 metros.\",\"24 metros.\",\"120 metros.\",\"400 metros.\",\"500 metros.\"],\"1\"]",
+    "created_at": "2022-06-19 18:53:57"
+  },
+  {
+    "id": 70,
+    "type": 1,
+    "parent": 35,
+    "name": "Considerando um retângulo e um quadrado podemos afirmar que:",
+    "data": "[\"Considerando um retângulo e um quadrado podemos afirmar que:\",[\"os ângulos do retângulo e do quadrado são diferentes.\",\"somente o quadrado é um quadrilátero.\",\" o retângulo e o quadrado são quadriláteros.\",\"o retângulo tem todos os lados com a mesma medida. \",\"o retângulo têm soma dos ângulos internos igual a 180º.\"],\"2\"]",
+    "created_at": "2022-06-19 19:01:38"
+  },
+  {
+    "id": 71,
+    "type": 1,
+    "parent": 36,
+    "name": "Dois triângulos são semelhantes de modo que altura de um é 4 cm e a altura do outro é 6 cm, seu um dos lados deste triângulo é 24 cm. Qual a medida do lado correspondente no outro triângulo?",
+    "data": "[\"Dois triângulos são semelhantes de modo que altura de um é 4 cm e a altura do outro é 6 cm, seu um dos lados deste triângulo é 24 cm. Qual a medida do lado correspondente no outro triângulo?\",[\"24\",\"10\",\"20\",\"15\",\"36\"],\"4\"]",
+    "created_at": "2022-06-19 19:31:01"
+  },
+  {
+    "id": 72,
+    "type": 1,
+    "parent": 26,
+    "name": " Seja a expressão numérica:\n \\[ \\left( \\left( {{1 \\over 2} + {1 \\over 3} - {1 \\over 4}} \\right). {1 \\over 5} \\right) ÷ {1 \\over 6}\\]\nEla equivale a:",
+    "data": "[\" Seja a expressão numérica:\\n \\\\( \\\\left( \\\\left( {{1 \\\\over 2} + {1 \\\\over 3} - {1 \\\\over 4}} \\\\right). {1 \\\\over 5} \\\\right) ÷ {1 \\\\over 6} \\\\) \\nEla equivale a:\",[\"0,5.\",\"0,6.\",\"0,7. \",\"0,8.\",\"0,9.\"],\"2\"]",
+    "created_at": "2022-06-19 21:23:19"
+  },
+  {
+    "id": 73,
+    "type": 1,
+    "parent": 25,
+    "name": "No Brasil, \\( 3 \\over 4 \\) da população vive na zona urbana. De que outra forma podemos representar esta fração? ",
+    "data": "[\"No Brasil, \\\\( 3 \\\\over 4 \\\\) da população vive na zona\\nurbana. De que outra forma podemos\\nrepresentar esta fração? \",[\"15%\",\"25%\",\"34%\",\"75%\",\"80%\"],\"3\"]",
+    "created_at": "2022-06-19 22:55:37"
+  },
+  {
+    "id": 74,
+    "type": 1,
+    "parent": 25,
+    "name": "A dízima periódica 2,555... pode ser representada pela fração:",
+    "data": "[\"A dízima periódica 2,555... pode ser representada pela fração:\",[\"\\\\( 2 \\\\over 5\\\\)\",\"\\\\( 23 \\\\over 9\\\\)\",\"\\\\( 25 \\\\over 9\\\\)\",\"\\\\( 25 \\\\over 10\\\\)\",\"\\\\( 20 \\\\over 5\\\\)\"],\"2\"]",
+    "created_at": "2022-06-19 22:58:49"
+  },
+  {
+    "id": 75,
+    "type": 1,
+    "parent": 24,
+    "name": " O número decimal que é resultado de 5 + 0,06 + 0,002 é:",
+    "data": "[\" O número decimal que é resultado de 5 + 0,06 + 0,002 é:\",[\"5,62\",\"5,602\",\"5,206\",\"5,062\",\"5,066\"],\"3\"]",
+    "created_at": "2022-06-19 23:04:56"
+  }
+]
+
+		const $ = id=> document.querySelector(id)
+		function enviar(){
+			const data = []
+			const text = $("#text").value
+			data.push(text)
+
+			const values = []
+			document.querySelectorAll("#op").forEach((a,b)=>{
+				values.push(a.value)
+			})
+			data.push(values)
+
+			document.querySelectorAll("input[type=checkbox]").forEach(a=>{
+				if(a.checked){
+					data.push(a.value)
+				}
+			})
+
+			const res = fetch(base("/add"), {
+     			 method: "post",
+     			 headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json'
+          },
+        body: JSON.stringify({type:1, parent: window.parentFolder, name: text, data:JSON.stringify(data)})
+    })
+			
+		}
+
+
+		function addFolder(folderName, parent){
+			if(!folderName){
+				const folder = $("#folder").value
+			}
+			
+			const res = fetch(base("/add"), {
+     			 method: "post",
+     			 headers: {
+		              'Accept': 'application/json',
+		              'Content-Type': 'application/json'
+          		},
+        		body: JSON.stringify({type:0, parent: parent?parent:window.parentFolder, name: folderName?folderName:folder, data:''})
+    		})
+		}
+      /*
+      const test = `D75 Resolver FT0bbma envolvendo informações apresentadas em tabelas ou gráficos.
+D77 Resolver problema usando a média aritmética.`.split("\n")
+
+     test.forEach(async a=>{
+     	await addFolder(a,4)
+     })
+    */
+
+	</script>
+</head>
+<body>
+
+<h3> Descritores SAAB BIMESTRE 2 </h3>
+Clique e veja uma questão do descritor para responder.. alguns descritores estão sem questão.
+<div id="app"></div>
+<script type="text/javascript">
+
+    function toQuestion(index, data){
+    	var text = data[0]
+    	var options = data[1]
+    	var correct = data[2]
+        
+        var vowels = ['a','b','c','d','e']
+        
+
+    	var divText = document.createElement("div")
+    	 //divText.appendChild(mj(math.parse(expr.value).toTex({parenthesis: parenthesis})));
+    	divText.innerHTML = index + " - " + text.replace(/\n/g, "<br>")
+    	
+    	function cert(event, b){
+    	   if(b == correct){
+    	      event.target.style = "accent-color:green";
+    	   }else{
+    	      event.target.style = "accent-color:red";
+    	   }
+    	}
+
+    	options.forEach((a,b)=>{
+    		let opDiv = document.createElement("div")
+    		let radio = document.createElement("input")
+    		radio.type = "radio"
+    		radio.name = "radio"
+    		radio.onclick = (event)=> {
+    			console.log("oi")
+    			cert(event, b)
+    			
+    		}
+    		
+    		opDiv.innerText = vowels[b] +") " + a
+    		opDiv.prepend(radio)
+    		divText.append(opDiv)
+    	})
+
+    	return divText
+
+    }
+
+    const historyList = []
+    let historyIndex = -1
+
+    function goBack(){
+    	if(historyList.length != 1){
+    		historyIndex--
+    		historyList.splice(historyList.length - 1, 1)
+    		_(historyList[historyIndex])
+    	}
+    }
+    function goForward(){
+
+    }
+
+	async function _(parent) {
+
+		if(historyList[historyList.length-1] == parent){
+			
+		}else{
+			historyList.push(parent)
+			historyIndex++
+		}
+		
+		const rows = items.filter(a=> a.parent == parent)
+		
+        const back = document.createElement("button")
+        back.innerHTML = "<- Voltar"
+        back.addEventListener("click", (event)=>{
+        	goBack()
+        })
+		
+		const app = $("#app")
+		app.innerHTML = ""
+		app.append(back)
+
+
+		rows.forEach((a,b)=>{
+			let x = document.createElement("div")
+			
+			
+
+			if(a.type == 0){
+				x.innerHTML = a.name
+				x.classList.add("folder")
+
+				x.addEventListener("click", (event)=>{
+				_(a.id)
+				})
+
+			}
+			if(a.type == 1){
+				x.append(toQuestion(b+1,JSON.parse(a.data)))
+			}
+			app.append(x)
+		})
+
+
+       window.parentFolder = parent
+       MathJax.typeset()
+	}
+	_(0)
+   
+</script>
+
+ 
+</html>
