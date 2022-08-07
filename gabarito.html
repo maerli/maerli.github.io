@@ -18,7 +18,20 @@ function preload(){
 function setup(){
 	canvas = createCanvas(400, 400)
 	
-	video = createCapture(VIDEO)
+	let constraints = {
+    video: {
+      mandatory: {
+        minWidth: 200,
+        minHeight: 200
+      },
+      optional: [{ maxFrameRate: 10 }]
+    },
+    audio: true
+  };
+
+	video = createCapture(constraints, function(stream) {
+    alert(JSON.stringify(stream));
+  });
 	video.size(200, 200)
 
 }
@@ -37,7 +50,7 @@ function detect(){
 	mat = cv.imread(canvas.canvas)
 	dst = mat.clone()
 	cv.cvtColor(mat, mat, cv.COLOR_RGBA2GRAY, 0);
-	
+
 	cv.HoughCircles(mat, circles, cv.HOUGH_GRADIENT,
                 1 , 45, 75, 40, 0, 0);
 	for (let i = 0; i < circles.cols; ++i) {
