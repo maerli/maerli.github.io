@@ -1,0 +1,4 @@
+This is a Brave Rewards publisher verification file.
+
+Domain: maerli.github.io
+Token: 7d49db53f09dc98fc9a9af6a28a50d58973ee5f4a0f12e73defd611100d35bbf
