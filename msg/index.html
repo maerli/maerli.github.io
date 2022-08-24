@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+	    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>GERADOR DE MENSAGEM SECRETA</title>
+	<style type="text/css">
+		span{
+			border: 1px solid black;
+			display: inline-block;
+			height: 50px;
+			text-align: center;
+			margin: 2px;
+			padding: 1px;
+			border-radius: 2px;
+		}
+		#f{
+			border-width: 1px;
+			background-color: gray;
+		}
+		@media print{
+			textarea, button, a{
+				display: none!important;
+			}
+		}
+		body{
+			padding: 10px;
+		}
+		textarea{
+			height: 100px;
+		}
+		a{
+			float: right;
+		}
+	</style>
+</head>
+<body>
+<script type="text/javascript">
+function oi(){
+x = document.querySelector("#text").value.toLowerCase().replace(/\n/g, " ").replace(/[ * ]/g, " ")
+document.querySelector("#body").innerHTML = ""
+y = x.split("")
+
+t = {}
+
+chosen = []
+
+choice = ()=>{
+	const a = Math.floor(10 + Math.random()*30)
+	const b = 100 + Math.floor(Math.random()*50)
+	h = true
+	chosen.forEach((n,m)=>{
+		if(n[0] * n[1] == a * b){
+			h = false
+			console.log("oi")
+		}
+	})
+	if(h){
+		chosen.push([a, b])
+		return [a,b, Math.random() < 0.5? 0 : 1]		
+	}else{
+		return choice()
+	}
+	
+}
+
+
+y.forEach((a,b)=>{
+	if(t[a]){
+		t[a][0] += 1
+	}else if( a != " " && a != "." && a != "," && a!= "?" && a != "!"){
+		t[a] = [1, choice()]
+	}
+})
+
+keys = Object.keys(t)
+shuffleArray(keys)
+
+function k(m,n,o){
+	if(o == 0){
+		return m + " x " + n
+	}
+	if(o == 1){
+		return (m*n) +" ÷ "+ m 
+	}
+}
+
+keys.forEach((a,b)=>{
+	let c = document.createElement("span")
+	c.id = "f"
+	c.innerHTML = a.toUpperCase() + " <br> " + k(t[a][1][0], t[a][1][1], t[a][1][2])
+	document.querySelector("#body").append(c)
+})
+document.querySelector("#body").append(document.createElement("br"))
+
+document.querySelector("#body").append(document.createElement("br"))
+
+document.querySelector("#body").append(document.createElement("br"))
+
+x.toLowerCase().split("").forEach((a,b)=>{
+	let c = document.createElement("span")
+	if(t[a]){
+		c.innerHTML = (t[a][1][2] ? t[a][1][1] : t[a][1][0] * t[a][1][1])  + "<br>" 
+		c.style.padding = "4px"
+	}
+	if(a == " "){
+		c.style.borderWidth="0"
+		c.style.width ="50px"
+	}
+	if(a == "." || a == "," || a == "?" || a == "!"){
+		c.innerHTML = a
+		c.style.borderWidth="0"
+	}
+	
+
+	document.querySelector("#body").append(c)
+	
+})
+
+
+	h = document.createElement("button")
+	h.innerHTML = "Imprimir"
+	h.classList.add("btn-small")
+	h.classList.add("red")
+	h.addEventListener("click", ()=>{
+		window.print()
+	})
+	document.querySelector("#body").append(document.createElement("br"))
+
+	document.querySelector("#body").append(h)
+
+
+}
+
+function shuffleArray(array) {
+    for (var i = array.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        var temp = array[i];
+        array[i] = array[j];
+        array[j] = temp;
+    }
+}
+
+</script>
+<a href="https://www.instagram.com/xmaerli/" >Criado por <img width="20" height="20" src="https://static.cdninstagram.com/rsrc.php/v3/yt/r/30PrGfR3xhB.png"> maerli pereira</a>
+<textarea id="text" placeholder="Digite sua MENSAGEM aqui!"></textarea><button class="btn-small blue" onclick="oi()">Criar</button><br>
+<b> MENSAGEM SECRETA </b>
+<br>
+NOME:
+<hr>
+<div id="body"></div>
+</body>
+</html>
