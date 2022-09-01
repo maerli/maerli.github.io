@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Show do milhão</title>
+	<style type="text/css">
+		.body{
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			background-image: url(show.png);
+			background-size: 100% 100%;
+		}
+		.l1{
+			background-image: url(l1.png);
+			width: 51%;
+			height: 100px;
+			background-repeat: no-repeat;
+			background-position: 10px 0;
+			margin-top: 16%;
+			background-size: 100% 100%;
+			margin-bottom: 10px;
+			border-radius: 20px;
+			color: white;
+			font-size: 25px;
+			text-align: center;
+			padding: 5px;
+
+		}
+		.opt{
+			background-image: url(l2.png);
+			width: 51%;
+			height: 70px;
+			background-repeat: no-repeat;
+			background-position: 80px 0px;
+			background-size: 100% 100%;
+			margin: 5px;
+			border-radius: 20px;
+			cursor: pointer;
+		}
+		.opt:hover{
+			outline-width: 5px;
+			outline-color: yellow;
+			outline-style: solid;
+		}
+		.img{
+			width: 70px;
+			height: 70px;
+			z-index: -99;
+			background-repeat: no-repeat;
+			background-size: 100% 100%;
+			background-color: rgb(255,255,255);
+			padding: 1px;
+			border-radius: 10px;
+			position: absolute;
+		}
+		.time{
+			width: 600px;
+			height: 100px;
+			float: right;
+			margin-top: -150px;
+		}
+		span{
+			width: 100%;
+			text-align: center;
+			display: inline-block;
+			position: relative;
+			margin: 0;
+			font-size: 25px;
+			color: white;
+			border-radius: 10px;
+			padding-top: 20px;
+			padding-bottom: 20px;
+		}
+		.cr{
+			color: white;
+			font-size: 32px;
+			text-align: center;
+		}
+
+	.opt {
+  position: relative;
+  animation-name: example;
+  animation-duration: 1s;
+  animation-delay: 0;
+}
+
+@keyframes example {
+  0%   {background-color:red; width: 0;}
+  25%  {background-color:yellow; width: 10%;}
+  50%  {background-color:blue; width: 20%;}
+  75%  {background-color:green; width: 30%;}
+  100% {background-color:red; width: 50%;}
+}
+#start{
+	position: fixed;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: rgba(0, 0, 0, 0.5);
+	flex-direction: column;
+}
+button{
+	padding: 20px;
+	color: white;
+	font-size: 32px;
+	background-color: green;
+	border-radius: 20px;
+	border-width: 0 3px 3px 0;
+	border-color: white;
+	border-style: solid;
+	cursor: pointer;
+	margin: 5px;
+}
+button:hover{
+	outline-color: yellow;
+	outline-style: groove;
+	outline-width: 3px;
+
+}
+.money{
+	font-size: 50px;
+	color: black;
+	padding: 10px;
+	text-shadow: 2px 2px white;
+	text-align: center;
+}
+input{
+	padding: 10px;
+	border-radius: 10px;
+	font-size: 30px;
+	text-align: center;
+}
+label{
+	color: white;
+	font-size: 32px;
+	padding: 10px;
+	margin: 5px;
+}
+
+</style>
+</head>
+<body>
+<div class="body">
+	<div class="l1"> </div>
+<div class="opt"><div class="img"></div><span id="opt1"></span></div>
+<div class="opt"><div class="img"></div><span id="opt2"></span></div>
+<div class="opt"><div class="img"></div><span id="opt3"></span></div>
+<div class="time">
+	<div class="money"></div>
+	<div class="cr"></div>
+</div>
+<div id="start"> <label>Segundos para resposta </label><input type="number" id="time"><button onclick="canPlay()"> JOGAR </button></div>
+</div>
+<script type="text/javascript">
+	var play = true
+	var imgs = document.querySelectorAll(".img")
+	var opts = document.querySelectorAll(".opt")
+	for(let i=0; i<imgs.length; i++){
+		imgs[i].style.backgroundImage = "url("+(i+1)+".gif)"
+		imgs[i].style.zIndex = "99"
+
+	}
+
+	var perguntas = [
+	["QUAL A SOMA DOS ÂNGULOS INTERNOS DE UM TRIÂNGULO?", "90º", "180º", "360º", 1 , "1 MIL"],
+	["Das 50 questões de uma prova, Maria errou 20. Que porcentagem corresponde a essa quantidade de erros?", "20%", "40%","60%", 0 , "5 MIL"],
+	["Na casa de João, gastava-se , em média, 600 quilowatts hora de energia elétrica a cada 30 dias. A família começou a economizar e conseguiu reduzir o consumo em 20%.Quantos quilowatts hora correspondem a essa redução?","120","200", "480", 2 , "10 MIL"],
+	["QUANTOS VÉRTICES TEM UM CONE?", "0", "1", "2", 1, "50 MIL"],
+	["O NÚMERO DECIMAL 1,20 REPRESENTADO NA FORMA DE PORCENTAGEM É?", "12%", "120%", "140%", 1, "200 MIL"],
+	["QUANTAS DIAGONAIS DISTINTAS TEM UM PENTÁGONO?", "5","6","7", 0, "300 MIL"],
+	["QUAL A SOMA DOS ÂNGULOS INTERNOS DE UM HEXÁGONO REGULAR?", "540º", "720º", "900º", 1 , "400 MIL"],
+	["A MEDIDA EM GRAUS DE CADA ÂNGULO INTERNO DE UM PENTÁGONO REGULAR É ?", "72º", "90º", "108º", 2, "500 MIL"],
+	["A REPRESENTAÇÃO DECIMAL DE  6/8 É?", "0,75", "1,75", "6,8", 0, "1 MILHÃO"]
+	]
+
+	const $ = (id)=> document.querySelector(id)
+
+	function doIt(i, _t){
+
+		function m(t, event){
+			y = event
+				if(play){
+				event.target.parentNode.style.backgroundImage = "none"
+				if(t == perguntas[i][4]){
+					event.target.parentNode.style.backgroundColor = "green"
+				}else{
+					event.target.parentNode.style.backgroundColor = "red"
+				}
+				clearTimeout(_k)
+				 setTimeout(()=>{
+					location.href = "?"+(parseInt(i,10)+1)
+				},3000)
+				play = false
+			}
+		}
+
+		$(".l1").innerHTML = perguntas[i][0]
+		var a = $("#opt1")
+		a.innerHTML = perguntas[i][1]
+		a.addEventListener("click", (event)=> m(0, event))
+		var b = $("#opt2")
+		b.innerHTML = perguntas[i][2]
+		b.addEventListener("click", (event)=> m(1, event))
+		var c = $("#opt3")
+		c.innerHTML = perguntas[i][3]
+		c.addEventListener("click", (event)=> m(2, event))
+
+		$(".money").innerHTML = perguntas[i][5]
+
+		try{
+		if(_k){
+		clearTimeout(_k)
+	}	
+	}catch(err){
+
+	}
+	
+	cronometro(_t)
+	localStorage.setItem("time", _t)
+	}
+
+	function undoIt(){
+		$(".l1").innerHTML = ""
+		var a = $("#opt1")
+		a.innerHTML = ""
+		var b = $("#opt2")
+		b.innerHTML = ""
+		var c = $("#opt3")
+		c.innerHTML = ""
+		$("button").innerHTML = "JOGAR NOVAMENTE"
+	}
+
+	function cronometro(_t){
+		var a = $(".cr")
+		var index = _t
+		_k = setInterval(()=>{
+			a.innerHTML = "CRONÔMETRO " + index
+			index--
+			if(index == -1){
+				clearTimeout(_k)
+				$("#start").style.display = "flex"
+				undoIt()
+			}
+		}, 1000)
+
+	}
+
+	var index = location.search.slice(1)
+	index = index == ""?0:index
+	function canPlay(){
+		var _t = parseInt($("#time").value, 10)
+		doIt(index, _t)
+		$("#start").style.display = "none"
+		play = true
+	}
+	var t = localStorage.getItem("time")
+	$("#time").value = t === null ? 30 : t
+
+  if(index == perguntas.length){
+  	$("button").innerHTML = "SEM PERGUNTAS "
+  	$("button").addEventListener("click", ()=> location.href = "?0")
+  }
+</script>
+</body>
+</html>
