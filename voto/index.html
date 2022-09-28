@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Pesquisa Intenção de Votos</title>
+	<style type="text/css">
+		img{
+			border-radius: 10px;
+			filter: grayscale(1);
+		}
+		.voted{
+			background-color: blue!important;
+		}
+		#candidatos{
+			display: flex;
+			flex-direction: row;
+			flex-wrap: wrap;
+			align-content: space-around;
+			justify-content: space-around;
+		}
+		.div{
+			width: 150px;
+			height: 150px;
+			padding: 10px;
+			border-radius: 5px;
+			background-color: rgb(249, 247, 245);
+			margin: 3px;
+			text-align: center;
+			font-size: 11px;
+		}
+		#menssagem{
+			border-radius: 5px;
+			background-color: pink;
+			padding: 10px;
+			margin-bottom: 10px;
+		}
+	</style>
+	<meta name="viewport" content="initial-scale=1">
+	<script type="text/javascript">
+    const url = "https://c8c4-45-161-187-12.sa.ngrok.io"
+		const $ = id => document.querySelector(id)
+		const c = (name, opt ,inner)=>{
+			const x = document.createElement(name)
+			if(inner){
+				x.innerHTML = inner
+			}
+			if(opt){
+				for(let i in opt){
+					x.setAttribute(i, opt[i])
+				}
+			}
+			return x
+		}
+
+		function table(rows_values) {
+			const t = c("table")
+			const tr = c("tr")
+			const _tr = c("tr")
+
+			tr.append(c("td", null, "Nome na Urna"))
+			tr.append(c("td", null, "Nº"))
+			tr.append(c("td", null, "Sigla"))
+
+			t.append(tr)
+
+			rows_values.forEach((a,b)=>{
+				const td = c("td", null, a)
+				_tr.append(td)
+			})
+			t.append(_tr)
+
+			return t
+		}
+
+		addEventListener("load", async ()=>{
+			const voted = localStorage.getItem("vote")
+
+			const req = await fetch(url+"/data")
+			const json = await req.json()
+
+			json.forEach((a,b)=>{
+				const div = document.createElement("div")
+				div.classList.add("div")
+				if(voted !== null && voted == a.id){
+					div.classList.add("voted")
+				}
+
+				div.addEventListener("click", async ()=>{
+					if(voted !== null){
+						alert("você já respondeu!")
+					}else{
+						localStorage.setItem("vote", a.id)
+						await fetch(url+"/vote/"+a.id)
+						location.reload()
+					}
+				})
+
+				const info = document.createElement("div")
+				info.append(table([a.name, a.num, a.partido]))
+
+				const src = a.img
+				const img = new Image()
+				img.width = 100
+				img.height = 100
+				img.src = src
+				div.append(img)
+				div.append(info)
+
+				$("#candidatos").append(div)
+			})
+		})
+
+	</script>
+</head>
+<body>
+<div id="menssagem">
+	<h1> Clique no Candidato no qual você deseja votar! </h1>
+	<h2> Esta pesquisa não tem caráter oficial!</h2>
+	<h3> siga <a href="https://www.instagram.com/xmaerli/">  xmaerli </a> para ver o resultado da pesquisa! </h3>
+</div>
+<div id="candidatos">
+	
+</div>
+</body>
+</html>
