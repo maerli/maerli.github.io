@@ -92,7 +92,7 @@
               t.push(i)
             }
             $("#result").innerHTML = t.map(a=>{
-              return `<div class="c${respo[a]}"> ${a} ) ${respo[a]?"correto":"errado"}</div>`
+              return `<div class="c${respo[a]}"> ${a} ) ${respo[a]?"correto":"errado"} <sub> cod: ${Math.random().toString().slice(-3)} </sub></div>`
             }).join("")
 
         }, 1000)
