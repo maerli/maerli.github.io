@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Prova recieve</title>
+	<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<link rel="stylesheet" href="/receive.css" />
+<script>
+	const id = 1155
+	window.idProof = 1155;
+</script>
+</head>
+<body>
+<div  class="noprint"> 
+<span id="nameProof"></span>
+<button onclick="toggle()"> 2 colunas </button>
+	<button onclick="shuffle()"> shuffle </button>
+	<input type="text" id="shf" onblur="_max()">
+	<button onclick="save()"> Save </button>
+	<button onclick="saveAs()"> Save As</button>
+	<button onclick="turnOn()"> Choose </button>
+	<button onclick="teacherMode()">Teacher mode</button>
+	<button onclick="window.print()">Imprimir </button>
+	<button onclick="insertGabarito()"> gabarito </button>
+	<button> <a href="/presentation/1155"> Presentation</a> </button>
+</div>
+
+<div class="head">
+ <img width="80" height="80" src="/mjv.png" />
+	<div class="ok">
+		<div class="emoji">🏎️</div>
+	<div> MIGUEL ABÍLIO DA COSTA </div>
+	<div> PROFESSOR(A): MARCOS MAERLI</div>
+	<div id="names" contenteditable="true"> SIMULADO DE MATEMÁTICA </div>
+	<div class="lined"> <div class="hr"> ALUNO(A): </div> <div class="data"> DATA___/___ /_____</div> </div>
+	
+
+	</div>
+
+</div>
+<div class="loader" ></div>
+<div class="row">
+ 
+</div>
+
+
+<script type="text/javascript" src="/receive.js"></script>
+</body>
+</html>
